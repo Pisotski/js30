@@ -1,0 +1,44 @@
+
+html{
+  background-color: #fceed1;
+  text-align: center;
+}
+body{
+  display:flex;
+  flex: 1;
+  align-items: center;
+  min-height: 100vh;
+}
+.clock{
+  position: relative;
+  align-self: center;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  margin: 50px auto;
+  background: -webkit-radial-gradient(50% 50%, circle, transparent 60%, rgb(104, 29, 88) 10%);
+  background: -moz-radial-gradient(50% 50%, circle, transparent 60%, rgb(104, 29, 88) 10%);
+  background: radial-gradient(50% 50%, circle, transparent 60%, rgb(104, 29, 88) 10%);
+  }
+.arrow{
+  position: absolute;
+  height: 50%;
+  width: 6px;
+  left: 50%;
+  background-color: black;
+  transform-origin: bottom;
+  transition: all 0.05s;
+  transition-timing-function: cubic-bezier(0, 2.96, 0.58, 1);
+}
+.arrow-seconds{
+  height: 50%;
+  width: 3px;
+  background-color: red;
+  z-index: 2;
+}
+.arrow-minutes{
+  height: 50%;
+  width: 5px;
+  background-color: blue;
+  z-index: 1;
+}
