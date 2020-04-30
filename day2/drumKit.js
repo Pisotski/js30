@@ -47,13 +47,18 @@ check()
 // TECHDEBT: tag div and tag p work differently inside of flexbox. Why?
 // create onClick event listener
 const changeStyle = function() {
-  console.log('say hi')
   const currentDrum = this;
+  const audio = currentDrum.querySelector('audio');
   currentDrum.classList.add('drum-kick');
-  currentDrum.querySelector('audio').play();
-  setTimeout(() => currentDrum.classList.remove('drum-kick'), 50)
+  audio.currentTime = 0; //rewinds to the 0s second every time
+  audio.play();
+}
+const removeStyle = function(e) {
+  if(e.propertyName !== 'transform') return;
+  this.classList.remove('drum-kick')
 }
 document.querySelectorAll('.drum').forEach(drum => drum.addEventListener('click', changeStyle));
+document.querySelectorAll('.drum').forEach(drum => drum.addEventListener('transitionend', removeStyle));
 
 // change style of the button when clicked
   // make the button a bit larger
