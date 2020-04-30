@@ -108,3 +108,4 @@ runTheClock()
 //1:48 lunch
 //3:00 back to work
 //3:23 BUG Fixed by adding another agrument to updateArrow function for computation additional degree every minute for hour's arrow.
+//
