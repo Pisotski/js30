@@ -4,23 +4,25 @@
   // to learn and understand css varialbes
     // declaration
       // CODE:
+        //:root{
+        // --colorful: #FFEA00;
+        // }
     // usage
       //CODE:
-    // changing through css if that's possible
-      //CODE:
+        // color: var(--colorful);
     // changing through js
       //CODE:
-    // deletion
-      //CODE:
-  // repeat a precise object placement. not flexbox
-  // learn more css
+      // document.documentElement.style.setProperty('--variable', value)
+  
+  // train a precise object placement. not flexbox
+  // learn more manipulations with css
 
   // steps:
   // create a blue page
   // place 3 elements
-    // h2 text bold
+    // h? text bold
     // choose correct font and sizing as on video
-    // h3 text with 3 range input
+    // h? text with 3 range input
     // a rectangle on top of the page that equals to 50% of given space
     // place a random picture on top of a rectangle described above.
   // bind a picture property with a certain range button
@@ -30,7 +32,7 @@
 const imagePadding = document.querySelector(`.frame`);
 const image = document.querySelector(`.frame img`);
 
-  // create 3 helper functions which will be invoked when related input element is clicked
+  // create 3 helper functions which will be invoked when related input element is updated
 const imageInputs = [].slice.call(document.querySelectorAll('input'))
 
 const handleUpdate = function(e) {
