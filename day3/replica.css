@@ -1,5 +1,5 @@
 :root{
-  --colorful: rgb(255, 234, 0);
+  --colorful: #FFEA00;
 }
 body{
   background:  #052b3ff9;
@@ -20,7 +20,8 @@ body{
 .header span{
   color: var(--colorful);
 }
-.picture {
+.frame {
+  position: relative;
   margin-top: 4vh;
   background-color: var(--colorful);
   border: none;
@@ -28,7 +29,11 @@ body{
   height: 450px;
   z-index: 1;
 }
-.picture img{
-  width: 80%;
-  height: 80%;
+.frame img{
+  filter: blur(5px);
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 100%;
+  height: 100%;
 }
