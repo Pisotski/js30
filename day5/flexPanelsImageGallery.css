@@ -1,0 +1,16 @@
+body{
+  background: lightblue;
+  margin: 0;
+}
+.panel{
+  display: flex;
+ }
+.panel p{
+  height: 100vh;
+  max-width: 10vw;
+  flex: 1;
+  background: yellowgreen;
+  background-image: url("https://image.yayimages.com/1600/photo/ufo-alien-newcomers-and-flying-saucers-65283834.jpg");
+  background-size: cover;
+  background-position: center;
+}
