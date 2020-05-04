@@ -47,7 +47,7 @@ const sortedByYearsLived = inventors.sort((a, b) => (a.passed - a.year) - (b.pas
 // create a list of Boulevards in paris the contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-// const deBoulevards = Array.from(document.querySelectorAll('.mw-category a')).map(link => link.textContent).filter(link => link.includes('de'));
+const deBoulevards = Array.from(document.querySelectorAll('.mw-category a')).map(link => link.textContent).filter(link => link.includes('de'));
 
 // make a list of people sorted by last name
 const peopleSortedByLastName = people.sort((a, b) => {
@@ -69,5 +69,3 @@ const sumOfTransportation = data.reduce((list, vehicle) => {
   list[vehicle] += 1;
   return list;
 }, {})
-
-console.log(sumOfTransportation)
