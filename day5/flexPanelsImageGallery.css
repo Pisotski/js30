@@ -1,16 +1,29 @@
 body{
   background: lightblue;
   margin: 0;
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
 }
 .panel{
   display: flex;
  }
-.panel p{
-  height: 100vh;
-  max-width: 10vw;
+.panel div{
+  display: flex;
+  height: 80vh;
+  width: 10vw;
   flex: 1;
   background: yellowgreen;
   background-image: url("https://image.yayimages.com/1600/photo/ufo-alien-newcomers-and-flying-saucers-65283834.jpg");
   background-size: cover;
   background-position: center;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid red;
+}
+.panel div p:nth-child(odd) {
+  display: none;
+  background: rgba(255, 255, 255, 0.42);
+  border-radius: 5%;
 }

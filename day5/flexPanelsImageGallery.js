@@ -1,12 +1,3 @@
-function greetings() {
-  const bodyElement = document.body;
-  const bodyBackgroundColor = window.getComputedStyle(bodyElement)['background-color'];
-  const greetings = document.createTextNode(`hello, my I'm a Flex Panles Image Gallery and my background color is ${bodyBackgroundColor}`)
-  bodyElement.appendChild(greetings);
-}
-
-greetings();
-
 // goal:
 //  to create a flexible grid with 5 pictures in a row
 // description:
@@ -25,5 +16,32 @@ greetings();
 //  CODE:   background-size: cover;
 //          background-position: center;
 // place 5 pictures in the row
-// every picture has to be 'shrinked' to its' center
 // all grid has to be displayed on the screen
+// display text in the middle of the picture
+  // create a function that will change the elements' size on hover over
+  // unhide text on a current element
+  // do the opposite when mouse is away from that element
+
+const pictures = Array.from(document.querySelectorAll(".panel div"));
+
+const handleElementChange = function(e) {
+
+  toggleElementSize(this);
+  toggleHide(this);
+}
+
+const toggleElementSize = function(DOMelement) {
+  //changes the picture size to flex: 5 if flex is 1 and backwards
+  // DOMelement.style.flex = DOMelement.style.flex === 5 ? 1 : 5;
+  if(DOMelement.style.flex === '5 1 0%') {
+    DOMelement.style.flex = 1
+  } else {
+    DOMelement.style.flex = 5;
+  }
+}
+const toggleHide = function(DOMelement) {
+  Array.from(DOMelement.children).map((child, i) => (i % 2 === 0) ? (child.style.display !== 'block') ? child.style.display = 'block' : child.style.display = 'none' : '');
+}
+
+pictures.forEach(element => element.addEventListener('mouseover', handleElementChange));
+pictures.forEach(element => element.addEventListener('mouseout', handleElementChange));
