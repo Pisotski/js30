@@ -22,26 +22,21 @@
   // unhide text on a current element
   // do the opposite when mouse is away from that element
 
-const pictures = Array.from(document.querySelectorAll(".panel div"));
+const pictures = document.querySelectorAll('.panel div');
 
-const handleElementChange = function(e) {
-
-  toggleElementSize(this);
-  toggleHide(this);
+const assignPictures = function () {
+  const pictureUrls = [
+    'https://hdwallpaperim.com/wp-content/uploads/2017/08/22/435641-ultra-wide-space.jpg',
+    'https://hdwallpaperim.com/wp-content/uploads/2017/08/22/433386-ultra-wide-space-space_art.jpg',
+    'https://live.staticflickr.com/577/20801778051_c8e68f5a8f_k.jpg',
+    'https://i.pinimg.com/originals/3b/b4/09/3bb40988b874db3e06d1b717e7b90d89.jpg',
+    'https://cdn.spacetelescope.org/archives/images/screen/heic1112e.jpg',
+  ]
+  pictures.forEach(picture => {
+    const url = `url(${pictureUrls[pictureUrls.length - 1]})`
+    picture.style.backgroundImage = url;
+    pictureUrls.pop();
+    });
 }
 
-const toggleElementSize = function(DOMelement) {
-  //changes the picture size to flex: 5 if flex is 1 and backwards
-  // DOMelement.style.flex = DOMelement.style.flex === 5 ? 1 : 5;
-  if(DOMelement.style.flex === '5 1 0%') {
-    DOMelement.style.flex = 1
-  } else {
-    DOMelement.style.flex = 5;
-  }
-}
-const toggleHide = function(DOMelement) {
-  Array.from(DOMelement.children).map((child, i) => (i % 2 === 0) ? (child.style.display !== 'block') ? child.style.display = 'block' : child.style.display = 'none' : '');
-}
-
-pictures.forEach(element => element.addEventListener('mouseover', handleElementChange));
-pictures.forEach(element => element.addEventListener('mouseout', handleElementChange));
+assignPictures();
