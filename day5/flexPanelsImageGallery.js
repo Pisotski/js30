@@ -22,7 +22,7 @@
   // unhide text on a current element
   // do the opposite when mouse is away from that element
 
-const pictures = document.querySelectorAll('.panel div');
+const pictures = document.querySelectorAll('.panel');
 
 const assignPictures = function () {
   const pictureUrls = [
@@ -40,3 +40,21 @@ const assignPictures = function () {
 }
 
 assignPictures();
+
+// first child should drop down
+
+const open = function(e) {
+
+  this.classList.toggle('open');
+}
+
+const showText = function(e) {
+
+  if  (e.propertyName.includes('flex')){
+    this.classList.toggle('open-active');
+  }
+}
+
+pictures.forEach(picture => picture.addEventListener('click', open));
+pictures.forEach(picture => picture.addEventListener('transitionend', showText));
+
