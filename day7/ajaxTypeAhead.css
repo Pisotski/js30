@@ -1,0 +1,55 @@
+body{
+  background-color: rgba(255, 166, 0, 0.755);
+  margin: 0;
+  box-sizing: border-box;
+}
+.city-list{
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  border: 5px solid mistyrose;
+  align-items: center;
+}
+.city-search{
+  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+  font-size: x-large;
+  min-width: 50vw;
+  min-height: 10vh;
+  margin-top: 10vh;
+  text-align: center;
+  border: 5px solid rgba(211, 211, 211, 0.817);
+  border-radius: 5px;
+  outline: none;
+  transform: skew(0deg) !important;
+  background-color: rgba(255, 255, 255, 0.927) !important;
+}
+.city-info{
+  display: flex;
+  align-items: center;
+  justify-items: baseline;
+  justify-content: space-between;
+  min-height: 35px;
+  width: 40vw;
+}
+.city-name{
+  margin-left: 10px;
+}
+.city-population{
+  margin-right: 10px;
+}
+.city-list > :nth-child(even){
+  background-color: rgba(245, 245, 241, 0.945);
+  transform: skew(10deg);
+}
+.city-list > :nth-child(odd){
+  background-color: rgba(230, 230, 227, 0.927);
+  transform: skew(-10deg);
+}
+
+.city-list > :nth-child(even) > span{
+  transform: skew(-10deg);
+}
+
+.city-list > :nth-child(odd) > span{
+  transform: skew(10deg);
+}
