@@ -26,7 +26,9 @@
 //    create a function that will sort cities by letters that are typed in
 //    append textnodes to the input field
 
-const endpoint = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json"
+const endpoint = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+const citySearch = document.querySelector('.city-search');
+const cityList = document.querySelector('.city-list');
 
 let cities = [
     {
@@ -245,7 +247,7 @@ let cities = [
         "rank": "24", 
         "state": "Massachusetts"
     }
-]
+];
 
 
 
@@ -285,18 +287,42 @@ const createCityElement = function(cityInfo) {
   const cityNameText = document.createTextNode(city);
   const cityPopulationNumber = document.createTextNode(population);
 
-  cityName.appendChild(cityNameText)
+  cityName.appendChild(cityNameText);
   cityName.classList.add('city-name');
 
-  cityPopulation.appendChild(cityPopulationNumber)
+  cityPopulation.appendChild(cityPopulationNumber);
   cityPopulation.classList.add('city-population');
 
   cityContainer.appendChild(cityName);
   cityContainer.appendChild(cityPopulation);
   cityContainer.classList.add('city-info');
 
-  const cityList = document.querySelector('.city-list')
   cityList.appendChild(cityContainer);
 }
 
-createCityElement(cities[0]);
+const clearList = function() {
+
+  while (cityList.firstChild) {
+    cityList.removeChild(cityList.lastChild);
+  }
+
+  return;
+}
+
+const makeList = function(list) {
+
+  list.forEach(city => createCityElement(city));
+  return;
+}
+
+makeList(cities);
+
+citySearch.oninput = function(e) {
+
+  clearList();
+  const searchField = e.target.value;
+  makeList(cities.filter(cityInfo => cityInfo.city.includes(searchField)));
+}
+
+// TRY AJAX VIA PROMISES
+// TRY AJAX VIA ASYNC AWAIT
