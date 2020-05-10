@@ -251,31 +251,7 @@ let cities = [
 
 
 
-// Simplest way of dealing with AJAX requests in vanilla JS
-
-  // const getCities = function(endpoint) {
-  //   var oReq = new XMLHttpRequest();
-  //     oReq.onload = function (e) {
-  //         loadedData = e.target.response;
-  //     };
-  //     oReq.onload = function() {
-  //         if (oReq.readyState == 4 && oReq.status == 200) {
-  //             try {
-  //                 const data = oReq.response;
-  //             } catch(err) {
-  //                 console.log(err.message + " in " + oReq);
-  //                 return;
-  //             }
-              
-  //         }
-  //     };
-  //     oReq.open('GET', endpoint, true);
-  //     oReq.responseType = 'json';
-  //     oReq.send();
-  // }
-
-  // getCities(endpoint)
-
+// Simplest way of dealing with AJAX requests in vanilla JS aka callback
 // Create a function that on input chage will sort the list by the cities names
 
 const createCityElement = function(cityInfo) {
@@ -324,5 +300,24 @@ citySearch.oninput = function(e) {
   makeList(cities.filter(cityInfo => cityInfo.city.includes(searchField)));
 }
 
-// TRY AJAX VIA PROMISES
+
+const oReq = new XMLHttpRequest();
+oReq.onload = function() {
+  if (oReq.readyState == 4 && oReq.status == 200) {
+      try {
+        var data = oReq.response;
+      } catch(err) {
+        console.log(err.message + " in " + oReq);
+        return;
+      }
+    cities = data;
+    makeList(cities);
+  }
+};
+oReq.open('GET', endpoint, true);
+oReq.responseType = 'json';
+oReq.send();
+
+// TRY AJAX VIA PROMISES aka fetch
+
 // TRY AJAX VIA ASYNC AWAIT
