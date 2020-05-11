@@ -32,12 +32,12 @@ const cityList = document.querySelector('.city-list');
 
 let cities = [];
 
-const createCityElement = function(cityInfo) {
-  
+const createCityElement = function(cityInfo, index) {
+
   const { city, population } = cityInfo;
   const cityContainer = document.createElement('div');
-  const cityName = document.createElement('span');
-  const cityPopulation = document.createElement('span');
+  const cityName = document.createElement('div');
+  const cityPopulation = document.createElement('div');
   const cityNameText = document.createTextNode(city);
   const cityPopulationNumber = document.createTextNode(population);
 
@@ -52,6 +52,10 @@ const createCityElement = function(cityInfo) {
   cityContainer.classList.add('city-info');
 
   cityList.appendChild(cityContainer);
+
+  if( index >= 0 ) {
+    highlight(cityName, index);
+  }
 }
 
 const clearList = function() {
@@ -63,15 +67,28 @@ const clearList = function() {
   return;
 }
 
-const makeList = function(list) {
+const makeList = function(list, index) {
 
   if(cities.length < 1) {
     // arguable
     cities = cities.concat(list);
   }
 
-  list.forEach(city => createCityElement(city));
+  list.forEach(city => createCityElement(city, index));
   return;
+}
+
+// A function that highlights all letters in input in every word
+function highlight(element, index) {
+// Divide words in 2 pieces by index
+  let innerHTML = element.innerHTML;
+  const firstPart = innerHTML.slice(0,index + 1);
+  const lastPart = innerHTML.slice(index + 1);
+// inject a span with the first part of the words
+  if (index >= 0) { 
+    innerHTML = `<span class='highlight'>${firstPart}</span>${lastPart}`
+    element.innerHTML = innerHTML;
+  }
 }
 
 // Create a function that on input chage will sort the list by the cities names
@@ -80,7 +97,8 @@ citySearch.oninput = function(e) {
 
   clearList();
   const searchField = e.target.value;
-  makeList(cities.filter(cityInfo => cityInfo.city.includes(searchField)));
+  const index = e.target.value.length - 1;
+  makeList(cities.filter(cityInfo => cityInfo.city.includes(searchField)), index);
 }
 
 // AJAX via callback
@@ -110,6 +128,5 @@ fetch(endpoint)
   .then(response => response.json())
   .then(data => {
     cities = data;
-    console.log(data);
     makeList(cities);
   });
