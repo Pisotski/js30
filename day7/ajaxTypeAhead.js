@@ -30,7 +30,7 @@ const endpoint = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb
 const citySearch = document.querySelector('.city-search');
 const cityList = document.querySelector('.city-list');
 
-let cities = [];
+const cities = [];
 
 const createCityElement = function(cityInfo, index) {
 
@@ -68,10 +68,11 @@ const clearList = function() {
 }
 
 const makeList = function(list, index) {
-
-  if(cities.length < 1) {
+  if(cities.length <= 0) {
     // arguable
-    cities = cities.concat(list);
+    cities.push(...list);
+    console.log(cities)
+
   }
 
   list.forEach(city => createCityElement(city, index));
@@ -127,6 +128,6 @@ citySearch.oninput = function(e) {
 fetch(endpoint)
   .then(response => response.json())
   .then(data => {
-    cities = data;
-    makeList(cities);
+    // cities = data;
+    makeList(data);
   });

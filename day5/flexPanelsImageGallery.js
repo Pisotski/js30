@@ -28,7 +28,7 @@ const assignPictures = function () {
   const pictureUrls = [
     'https://hdwallpaperim.com/wp-content/uploads/2017/08/22/435641-ultra-wide-space.jpg',
     'https://hdwallpaperim.com/wp-content/uploads/2017/08/22/433386-ultra-wide-space-space_art.jpg',
-    'https://live.staticflickr.com/577/20801778051_c8e68f5a8f_k.jpg',
+    'https://ak.picdn.net/shutterstock/videos/8191870/thumb/12.jpg',
     'https://i.pinimg.com/originals/3b/b4/09/3bb40988b874db3e06d1b717e7b90d89.jpg',
     'https://cdn.spacetelescope.org/archives/images/screen/heic1112e.jpg',
   ]

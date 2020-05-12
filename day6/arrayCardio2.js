@@ -56,4 +56,3 @@ const findId = comments.find(comment => comment.id === 823423);
 
 const eraseMe = comments.findIndex(comment => comment.id === 823423);
 comments.splice(eraseMe, eraseMe);
-console.log(comments)

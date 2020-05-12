@@ -32,8 +32,11 @@
 const imagePadding = document.querySelector(`.frame`);
 const image = document.querySelector(`.frame img`);
 
-  // create 3 helper functions which will be invoked when related input element is updated
-const imageInputs = [].slice.call(document.querySelectorAll('input'))
+// create 3 helper functions which will be invoked when related input element is updated
+// const imageInputs = [].slice.call(document.querySelectorAll('input'));
+// const imageInputs = Array.from(document.querySelectorAll('input'));
+const imageInputs = document.querySelectorAll('input');
+
 
 const handleUpdate = function(e) {
   const value = this.value;
@@ -51,6 +54,7 @@ const handleUpdate = function(e) {
     break;
   }
 }
+imageInputs.forEach(input => input.addEventListener('input', handleUpdate))
 
 imageInputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
 imageInputs.forEach(input => input.addEventListener('change', handleUpdate))
