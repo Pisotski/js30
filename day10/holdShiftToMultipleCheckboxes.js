@@ -26,10 +26,10 @@ const letters = [...mail.rows];
 const crossOutLetter = function(e) {
   // get text from selected row
   // this.lastChild.previousElementSibling.innerHTML
-  const isCrossedOut = letters.some(letter => letter.classList.contains('crossed-out'));
+  const isCrossedOut = letters.filter(letter => letter.classList.contains('crossed-out'));
   this.classList.toggle('crossed-out');
 
-  if( isCrossedOut ) {
+  if( isCrossedOut.length === 1 ) {
 
     var crossingOut = false;
     var hasStarted = false;
