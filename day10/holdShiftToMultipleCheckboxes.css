@@ -1,6 +1,29 @@
+:root{
+  --niceAndYellow: rgb(238, 192, 91);
+  --niceAndYellowButDarker: rgb(213, 150, 16); 
+}
 body {
   display: flex;
   justify-content: center;
   margin-top: 10%;
-  background-color: #BADA55;
+  background-color: mistyrose;
+}
+table {
+  max-width: 50vw;
+  background-color: var(--niceAndYellow);
+  box-shadow: 10px 10px var(--niceAndYellowButDarker);
+}
+table, th, td {
+  border: 1px solid sandybrown;
+  border-collapse: collapse;
+}
+tr > td:first-child {
+  border-right: 2px solid sandybrown;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+.crossed-out {
+  text-decoration: line-through;
 }
