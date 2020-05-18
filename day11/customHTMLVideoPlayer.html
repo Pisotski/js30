@@ -15,15 +15,25 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
     <figure id="video-container">
       <video id="video" controls preload="metadata" poster="https://www.desktopbackground.org/p/2014/08/23/813690_460x260px-interesting-big-buck-bunny-wallpapers-68-05-kb_1600x1000_h.jpg">
         <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
       </video>
+
+
       <ul id="video-controls">
-        <li><button id="playpause" class="control-button" type="button">Play/pause</button></li>
-        <li><button id="stop" class="control-button" type="button">Stop</button></li>
+        <li class="playpause-container">
+          <div class="container">
+            <div class="btn play">
+              <span class="bar bar-1"></span>
+              <span class="bar bar-2"></span>				
+            </div>
+          </div>
+        </li>
+        <!-- <li><button id="stop" class="control-button" type="button">Stop</button></li> -->
       </ul>
-      </figure>
+    </figure>
     <script src="customHTMLVideoPlayer.js" async defer></script>
   </body>
 </html>
