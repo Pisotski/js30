@@ -48,64 +48,51 @@ table {
 }
 
 /* Styling start */
+:root{
+  --main-lines-color: white;
+  --on-hover-color: #333;
+  --highlight-color: sandybrown;
+  --working: violet;
+  /* var(--on-hover-color) */
+}
 body{
   background-color: mistyrose;
   margin-top: 15%;
 }
 #video-container{
   display: flex;
-  justify-content: center;
   margin-left: 25%;
   width: 50%;
+  justify-content: center;
+  flex-direction: column;
   border: 3px solid violet;
-
 }
 #video{
   object-fit: fill;
   max-width: 100%;
 }
-#video-controls{ 
-  position: absolute;
+.control-panel{
+  background-color: gray;
+  display: flex;
 }
 
 /* BUTTONS DESIGN */
-
-/* https://image.flaticon.com/icons/png/512/748/748134.png */
-/* SVG PLAY BORDER RADIUS */
-/* https://www.flaticon.com/premium-icon/icons/svg/2550/2550043.svg */
-/* SVG PLAY PAUSE RADIUS */
-
-.container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  flex-wrap: nowrap;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
-}
+/* PLAY PAUSE BUTTON START */
 
 .btn {
   position: relative;
   width: 40px;
   height: 40px;
-  border: white 3px solid;
+  border: var(--main-lines-color) 3px solid;
   border-radius: 3px;
   cursor: pointer;
-  -webkit-transition: border 0.1s ease-in-out;
   transition: border 0.1s ease-in-out;
 }
 .btn:hover {
-  border: #333 3px solid;
+  border: var(--on-hover-color) 3px solid;
 }
 .btn:hover .bar {
-  background-color: #333;
+  background-color: var(--on-hover-color);
 }
 .btn .bar {
   display: inline-block;
@@ -115,27 +102,74 @@ body{
   width: 3px;
   height: 20px;
   border-radius: 3px;
-  background-color: white;
-  -webkit-transform-origin: center;
-          transform-origin: center;
-  -webkit-transition: background 0.1s ease-in-out, -webkit-transform 0.4s ease-in-out;
-  transition: background 0.1s ease-in-out, -webkit-transform 0.4s ease-in-out;
+  background-color: var(--main-lines-color);
   transition: transform 0.4s ease-in-out, background 0.1s ease-in-out;
-  transition: transform 0.4s ease-in-out, background 0.1s ease-in-out, -webkit-transform 0.4s ease-in-out;
 }
 .btn.pause .bar-1 {
-  -webkit-transform: translateX(13.5px) translateY(0px) rotate(0deg);
-          transform: translateX(13.5px) translateY(0px) rotate(0deg);
+  transform: translateX(13.5px) translateY(0px) rotate(0deg);
 }
 .btn.pause .bar-2 {
-  -webkit-transform: translateX(24px) translateY(0px) rotate(0deg);
-          transform: translateX(24px) translateY(0px) rotate(0deg);
+  transform: translateX(24px) translateY(0px) rotate(0deg);
 }
 .btn.play .bar-1 {
-  -webkit-transform: translateX(20px) translateY(-5px) rotate(-55deg);
-          transform: translateX(20px) translateY(-5px) rotate(-55deg);
+  transform: translateX(20px) translateY(-5px) rotate(-55deg);
 }
 .btn.play .bar-2 {
-  -webkit-transform: translateX(20px) translateY(5px) rotate(-125deg);
-          transform: translateX(20px) translateY(5px) rotate(-125deg);
+  transform: translateX(20px) translateY(5px) rotate(-125deg);
 }
+/* PLAY PAUSE BUTTON START */
+
+/* STOP PAUSE BUTTON START */
+.btn.stop .bar-3 {
+  transform: translateX(9.5px) translateY(0px) rotate(0deg);
+}
+.btn.stop .bar-4 {
+  transform: translateX(26.5px) translateY(0px) rotate(0deg);
+}
+.btn.stop .bar-5 {
+  transform: translateX(18px) translateY(-9px) rotate(90deg);
+}
+.btn.stop .bar-6 {
+  transform: translateX(18px) translateY(10px) rotate(90deg);
+}
+.btn.stop-active .bar-3 {
+  transform: translateX(18px) translateY(10px) rotate(90deg);
+}
+.btn.stop-active .bar-4 {
+  transform: translateX(9.5px) translateY(0px) rotate(0deg);
+}
+.btn.stop-active .bar-5 {
+  transform: translateX(26.5px) translateY(0px) rotate(0deg);
+}
+.btn.stop-active .bar-6 {
+  transform: translateX(18px) translateY(-9px) rotate(90deg);
+}
+/* STOP PAUSE BUTTON END */
+
+/* PROGRESS BAR */
+
+.progress-bar {
+  min-width: 100%;
+}
+.progress {
+  background-color: crimson;
+}
+
+/* .progress-bar-container:hover .progress-bar{
+  background-color: var(--on-hover-color);
+} */
+
+/* PROGRESS BAR END*/
+
+/* VOLUME PROGRESS BAR */
+
+.volume-container{
+  display: flex;
+  align-items: center;
+  max-width: 40%;
+}
+.volume-progress{
+  position: relative;
+}
+/* VOLUME PROGRESS BAR END */
+

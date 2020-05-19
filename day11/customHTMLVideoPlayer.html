@@ -21,18 +21,43 @@
         <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
       </video>
 
-
-      <ul id="video-controls">
-        <li class="playpause-container">
-          <div class="container">
-            <div class="btn play">
-              <span class="bar bar-1"></span>
-              <span class="bar bar-2"></span>				
-            </div>
+      <div class="control-panel">
+        <div class="play-pause-container">
+          <div class="btn play">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>				
           </div>
-        </li>
-        <!-- <li><button id="stop" class="control-button" type="button">Stop</button></li> -->
-      </ul>
+        </div>
+        <div class="stop-container">
+          <div class="btn stop">
+            <span class="bar bar-3"></span>
+            <span class="bar bar-4"></span>
+            <span class="bar bar-5"></span>
+            <span class="bar bar-6"></span>
+          </div>
+        </div>
+        <div class="mute-container">
+          <div class="btn mute">
+            <span>mute</span>
+            <!-- <span class="bar bar-3"></span>
+            <span class="bar bar-4"></span>
+            <span class="bar bar-5"></span>
+            <span class="bar bar-6"></span> -->
+          </div>
+        </div>
+        <div class="volume-container">
+          <div class="btn volume">VOL</div>
+          <progress class="volume-progress" value="0" min="0"></progress>
+          <!-- <span class="volume-progress"></span> -->
+        </div>
+      </div>
+      <div class="progress-bar-container">
+
+        <progress class="progress-bar" value="0" min="0">
+          <span class="progress"></span>
+        </progress>
+      </div>
+
     </figure>
     <script src="customHTMLVideoPlayer.js" async defer></script>
   </body>
