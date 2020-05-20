@@ -59,8 +59,9 @@ table {
   /* var(--on-hover-color) */
 }
 body{
-  background-color: mistyrose;
-  margin-top: 15%;
+  background-image: linear-gradient( 180.3deg,  rgba(214,224,255,1) 37.2%, rgba(254,168,168,1) 137.3% );
+  height: 75vh;
+  margin-top: 25vh;
 }
 #video-container{
   display: flex;
@@ -170,6 +171,7 @@ body{
 .volume-container {
   display: flex;
   align-items: center;
+  width: 100%;
   max-width: 40%;
 }
 .volume-progress {
@@ -182,7 +184,8 @@ progress::-webkit-progress-value {
 }
 
 .volume-container:hover .volume-progress {
-  width: 300px;
+
+  width: 100%;
 }
 /* VOLUME PROGRESS BAR END */
 
