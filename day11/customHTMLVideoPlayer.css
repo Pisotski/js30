@@ -48,10 +48,13 @@ table {
 }
 
 /* Styling start */
+
 :root{
   --main-lines-color: white;
   --on-hover-color: #333;
   --highlight-color: sandybrown;
+  --panel-padding-color: rgba(51, 51, 51, 0.85);
+
   --working: violet;
   /* var(--on-hover-color) */
 }
@@ -65,14 +68,14 @@ body{
   width: 50%;
   justify-content: center;
   flex-direction: column;
-  border: 3px solid violet;
+  border: 3px solid var(--working);
 }
 #video{
   object-fit: fill;
   max-width: 100%;
 }
 .control-panel{
-  background-color: gray;
+  background-color: var(--panel-padding-color);
   display: flex;
 }
 
@@ -81,7 +84,7 @@ body{
 
 .btn {
   position: relative;
-  width: 40px;
+  min-width: 40px;
   height: 40px;
   border: var(--main-lines-color) 3px solid;
   border-radius: 3px;
@@ -90,6 +93,9 @@ body{
 }
 .btn:hover {
   border: var(--on-hover-color) 3px solid;
+}
+.btn:active {
+  background-color: var(--highlight-color);
 }
 .btn:hover .bar {
   background-color: var(--on-hover-color);
@@ -150,9 +156,7 @@ body{
 
 .progress-bar {
   min-width: 100%;
-}
-.progress {
-  background-color: crimson;
+  height: 2rem;
 }
 
 /* .progress-bar-container:hover .progress-bar{
@@ -163,13 +167,37 @@ body{
 
 /* VOLUME PROGRESS BAR */
 
-.volume-container{
+.volume-container {
   display: flex;
   align-items: center;
   max-width: 40%;
 }
-.volume-progress{
-  position: relative;
+.volume-progress {
+  width: 0px;
+  border-radius: 0 0 5px 5px;
+  transition: width 1s cubic-bezier(0.25, 0.1, 0, 1.35);
+}
+progress::-webkit-progress-value {
+  background: var(--highlight-color);
+}
+
+.volume-container:hover .volume-progress {
+  width: 300px;
 }
 /* VOLUME PROGRESS BAR END */
+
+/* SUBMENU */
+/* REWIND BUTTONS */
+.backward-container {
+}
+.forward-container {
+}
+.expand-container {
+}
+.submenu{
+  display: flex;
+  margin-left: auto;
+}
+/* EXPAND BUTTON END */
+
 

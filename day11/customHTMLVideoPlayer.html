@@ -36,28 +36,36 @@
             <span class="bar bar-6"></span>
           </div>
         </div>
-        <div class="mute-container">
-          <div class="btn mute">
-            <span>mute</span>
-            <!-- <span class="bar bar-3"></span>
-            <span class="bar bar-4"></span>
-            <span class="bar bar-5"></span>
-            <span class="bar bar-6"></span> -->
-          </div>
-        </div>
         <div class="volume-container">
-          <div class="btn volume">VOL</div>
+              <div class="btn mute">
+                <span>M</span>
+              </div>
           <progress class="volume-progress" value="0" min="0"></progress>
           <!-- <span class="volume-progress"></span> -->
         </div>
+        <div class="submenu">
+          <div class="backward-container">
+            <div class="btn backward">
+              &lt;= 10s
+            </div>
+          </div>
+          <div class="forward-container">
+            <div class="btn forward">
+              25s =&gt;
+            </div>
+          </div>
+          <div class="expand-container">
+            <div class="btn expand">
+              EXP
+            </div>
+          </div>
+        </div>
       </div>
       <div class="progress-bar-container">
-
         <progress class="progress-bar" value="0" min="0">
           <span class="progress"></span>
         </progress>
       </div>
-
     </figure>
     <script src="customHTMLVideoPlayer.js" async defer></script>
   </body>
