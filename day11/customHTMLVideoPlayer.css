@@ -184,7 +184,6 @@ progress::-webkit-progress-value {
 }
 
 .volume-container:hover .volume-progress {
-
   width: 100%;
 }
 /* VOLUME PROGRESS BAR END */

@@ -27,7 +27,13 @@ const progress = document.querySelector('.progress');
 const progressBar = document.querySelector('.progress-bar');
 const forwardRewind = document.querySelector('.forward-container')
 const backwardRewind = document.querySelector('.backward-container')
+const fullScreen = document.querySelector('.full-screen-container')
 
+const fullScreenEnabled = !!(document.fullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled || document.webkitSupportsFullscreen || document.webkitFullscreenEnabled || document.createElement('video').webkitRequestFullScreen);
+
+if (!fullScreenEnabled) {
+  fullscreen.style.display = 'none';
+}
 
 video.controls = false;
 video.muted = true;
@@ -78,7 +84,7 @@ const handleProgress = function( e ) {
 
 };
 
-const handleRewind = function(e) {
+const handleRewind = function( e ) {
   
   if(this !== progressBar) {
 
@@ -102,9 +108,9 @@ const handleRewind = function(e) {
   video.currentTime = pos * video.duration;
   return;
 
-}
+};
 
-const outOfTimeFrame = function(seconds) {
+const outOfTimeFrame = function( seconds ) {
 
   const futureTimeMark = video.currentTime + seconds;
 
@@ -117,10 +123,10 @@ const outOfTimeFrame = function(seconds) {
     return futureTimeMark > video.duration
 
   }
+  const handleVolume = function( e ) {
 
 }
 
-const handleVolume = function(e) {
   
   video.muted = false;
   mute.style.backgroundColor = 'transparent';
@@ -128,7 +134,7 @@ const handleVolume = function(e) {
   volume.value = pos;
   video.volume = pos;
 
-}
+};
 
 const keyRouter = function( e ) {
 
@@ -152,7 +158,32 @@ const keyRouter = function( e ) {
 
   return;
 
-}
+};
+
+const handleFullScreen = function( e ) {
+  if (isFullScreen()) {
+     if (document.exitFullscreen) document.exitFullscreen();
+     else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+     else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
+     else if (document.msExitFullscreen) document.msExitFullscreen();
+     setFullscreenData(false);
+  }
+  else {
+     if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
+     else if (videoContainer.mozRequestFullScreen) videoContainer.mozRequestFullScreen();
+     else if (videoContainer.webkitRequestFullScreen) videoContainer.webkitRequestFullScreen();
+     else if (videoContainer.msRequestFullscreen) videoContainer.msRequestFullscreen();
+     setFullscreenData(true);
+  }
+};
+
+const isFullScreen = function() {
+  return !!(document.fullScreen || document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement);
+};
+
+const setFullscreenData = function(state) {
+  videoContainer.setAttribute('data-fullscreen', !!state);
+};
 
          video.addEventListener('loadedmetadata', () => progressBar.setAttribute('max', video.duration));
       document.addEventListener('keydown', keyRouter);
@@ -165,5 +196,4 @@ const keyRouter = function( e ) {
    progressBar.addEventListener('click', handleRewind);
  forwardRewind.addEventListener('click', handleRewind);
 backwardRewind.addEventListener('click', handleRewind);
-        volume.addEventListener('click', handleVolume);
-        volume.addEventListener('mousedown mouseup', handleVolume);
+    fullScreen.addEventListener('click', handleFullScreen);
