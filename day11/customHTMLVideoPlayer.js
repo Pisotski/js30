@@ -21,23 +21,21 @@ const videoControls = document.querySelector('#video-controls');
 const playPause = document.querySelector('.btn.play');
 const stop = document.querySelector('.btn.stop');
 const mute = document.querySelector('.btn.mute');
+const muteSVG = document.querySelector('.icon.speaker');
 const volume = document.querySelector('.volume-progress');
-const volumeContainer = document.querySelector('.volume-container');
 const progress = document.querySelector('.progress');
 const progressBar = document.querySelector('.progress-bar');
 const forwardRewind = document.querySelector('.forward-container')
 const backwardRewind = document.querySelector('.backward-container')
 const fullScreen = document.querySelector('.full-screen-container')
-
 const fullScreenEnabled = !!(document.fullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled || document.webkitSupportsFullscreen || document.webkitFullscreenEnabled || document.createElement('video').webkitRequestFullScreen);
+let cacheVolume = 0.5;
+let cacheVolumeProgressBarPosition;
 
 if (!fullScreenEnabled) {
   fullscreen.style.display = 'none';
 }
-
 video.controls = false;
-video.muted = true;
-mute.style.backgroundColor = 'sandybrown';
 
 const handlePlayPause = function( e ) {
 
@@ -72,9 +70,19 @@ const handleStop = function( e ) {
 const handleMute = function( e ) {
 
   const isMuted = video.muted;
-  video.muted = isMuted ? false : true;
-  mute.style.backgroundColor = isMuted ? 'transparent' : 'var(--highlight-color)';
+  if( isMuted ) {
+    video.muted = false;
+    video.volume = cacheVolume; 
+    volume.value = cacheVolumeProgressBarPosition;
+  } else {
 
+    // memoize it if have time
+    cacheVolume = video.volume;
+    cacheVolumeProgressBarPosition = volume.value;
+    volume.value = 0;
+    video.volume = 0;
+    video.muted = true;
+  }
 };
 
 const handleProgress = function( e ) {
@@ -123,17 +131,13 @@ const outOfTimeFrame = function( seconds ) {
     return futureTimeMark > video.duration
 
   }
-  const handleVolume = function( e ) {
-
 }
 
-  
-  video.muted = false;
-  mute.style.backgroundColor = 'transparent';
+const handleVolume = function( e ) {
+
   const pos = (e.pageX  - this.offsetLeft) / this.offsetWidth;
   volume.value = pos;
   video.volume = pos;
-
 };
 
 const keyRouter = function( e ) {
@@ -142,7 +146,8 @@ const keyRouter = function( e ) {
 
     case 32 :
       e.preventDefault();
-      handlePlayPause();
+      playPause.classList.add('active');
+      playPause.click();
     break;
 
     case 83 :
@@ -185,15 +190,17 @@ const setFullscreenData = function(state) {
   videoContainer.setAttribute('data-fullscreen', !!state);
 };
 
-         video.addEventListener('loadedmetadata', () => progressBar.setAttribute('max', video.duration));
       document.addEventListener('keydown', keyRouter);
+         video.addEventListener('loadedmetadata', () => progressBar.setAttribute('max', video.duration));
          video.addEventListener('loadedmetadata', () => volume.value = 0.5);
          video.addEventListener('timeupdate', handleProgress);
          video.addEventListener('click', handlePlayPause);
      playPause.addEventListener('click', handlePlayPause);
           stop.addEventListener('click', handleStop);
-          mute.addEventListener('click', handleMute)
+          mute.addEventListener('onclick', handleMute);
+       muteSVG.addEventListener('click', handleMute);
    progressBar.addEventListener('click', handleRewind);
  forwardRewind.addEventListener('click', handleRewind);
 backwardRewind.addEventListener('click', handleRewind);
     fullScreen.addEventListener('click', handleFullScreen);
+        volume.addEventListener('click', handleVolume);
