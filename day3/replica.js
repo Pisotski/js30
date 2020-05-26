@@ -1,7 +1,7 @@
 // today, since there is no specific assignment. I want to replicate Wes Bos's page as precise as possible. I want to place every element on it's place as precise as possible.
 
 // goals:
-  // to learn and understand css varialbes
+  // to learn and understand css variables usage
     // declaration
       // CODE:
         //:root{
@@ -10,7 +10,7 @@
     // usage
       //CODE:
         // color: var(--colorful);
-    // changing through js
+    // changing with js
       //CODE:
       // document.documentElement.style.setProperty('--variable', value)
   
@@ -37,25 +37,34 @@ const image = document.querySelector(`.frame img`);
 // const imageInputs = Array.from(document.querySelectorAll('input'));
 const imageInputs = document.querySelectorAll('input');
 
-
 const handleUpdate = function(e) {
+
   const value = this.value;
+
   switch (this.dataset.type) {
+
   case 'spacing':
+
     const perc = `${value}%`
     image.style.top = perc;
     image.style.left = perc;
     break;
+
   case 'blur':
+
     image.style.filter  = `blur(${value}px)`;
     break;
+
   case 'base-color':
+
     document.documentElement.style.setProperty('--colorful', value)
     break;
-  }
-}
-imageInputs.forEach(input => input.addEventListener('input', handleUpdate))
 
+  }
+
+}
+
+imageInputs.forEach(input => input.addEventListener('input', handleUpdate))
 imageInputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
 imageInputs.forEach(input => input.addEventListener('change', handleUpdate))
 
