@@ -1,0 +1,30 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("https://luparestaurant.com/wp-content/uploads/sites/33/2019/06/wEBSITE-PIC-1-upload-1920x1080.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+img {
+  height: 15px;
+  width: 15px;
+}
+
+li {
+  list-style: none;
+  padding: 0.5rem;
+}
+
+.taco-menu {
+  background-color: rgba(240, 255, 255, 0.788);
+  border: 5px solid rgba(51, 51, 51, 0.269);
+  width: 40%;
+  background-clip: padding-box;
+  text-align: center;
+  padding: 2rem;
+}
+
